@@ -1,4 +1,10 @@
 
+# Actions Workflow Templates
+
+> Looking for sample workflows for the Azure GitHub Actions? [Click here.](https://github.com/Azure/actions-workflow-samples)
+
+This repository contains GitHub Action workflow templates used by the Azure CLI, Azure Portal, and Visual Studio Code.
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
