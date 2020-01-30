@@ -15,7 +15,7 @@ jobs:
     - name: Set up Python version
       uses: actions/setup-python@v1
       with:
-        dotnet-version: '${python-version}'
+        python-version: '${python-version}'
     
     - name: Install Python dependencies
       run: |
