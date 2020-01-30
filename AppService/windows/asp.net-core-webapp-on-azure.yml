@@ -3,7 +3,7 @@
 
 name: Build and deploy ASP.Net Core app to Azure Web App
 
-on: [push, pull_request]
+on: push
 
 jobs:
   build-and-deploy:
