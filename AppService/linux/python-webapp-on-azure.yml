@@ -17,18 +17,13 @@ jobs:
       with:
         python-version: '${python-version}'
     
-    - name: Install Python dependencies
-      run: |
-        python3 -m venv env
-        source env/bin/activate
-        pip install -r requirements.txt
-
-    - name: Zip the application files
-      run: zip -r myapp.zip .
+    - name: Build using AppService-Build
+      uses: azure/appservice-build@v1
+      with:
+        platform: python
     
     - name: 'Deploy to Azure Web App'
     - uses: azure/webapps-deploy@v1
       with: 
         app-name: '${web-app-name}'
         publish-profile: ${{ secrets.${azure-webapp-publish-profile-name} }}
-        package: './myapp.zip'
