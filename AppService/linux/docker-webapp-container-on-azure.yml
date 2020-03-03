@@ -36,6 +36,7 @@ jobs:
       uses: azure/webapps-container-deploy@v1
       with:
         app-name: '${web-app-name}'
+        slot-name: '${slot-name}'
         images: '${container-registry-name}/${image-name}:${{ github.sha }}'
     
     - name: 'Logout of Azure CLI'

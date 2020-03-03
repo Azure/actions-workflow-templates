@@ -29,4 +29,5 @@ jobs:
     - uses: azure/webapps-deploy@v1
       with: 
         app-name: '${web-app-name}'
+        slot-name: '${slot-name}'
         publish-profile: ${{ secrets.${azure-webapp-publish-profile-name} }}
