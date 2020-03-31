@@ -18,7 +18,7 @@ jobs:
     - name: Install Nuget
       uses: nuget/setup-nuget@v1
       with:
-        nuget-version: ${nuget-version}
+        nuget-version: 'latest'
     
     - name: Install dependencies and project tools from the solution file
       run: nuget restore
