@@ -22,12 +22,12 @@ jobs:
     
     - name: Install Python dependencies
       run: |
-        python3 -m venv env
-        source env/bin/activate
+        python -m venv env
+        .\env\Scripts\activate
         pip install -r requirements.txt
 
     - name: Zip the application files
-      run: zip -r myapp.zip .
+      run: Compress-Archive .\* app.zip
     
     - name: 'Deploy to Azure Web App'
     - uses: azure/webapps-deploy@v1
@@ -35,4 +35,4 @@ jobs:
         app-name: '${web-app-name}'
         slot-name: '${slot-name}'
         publish-profile: ${{ secrets.${azure-webapp-publish-profile-name} }}
-        package: './myapp.zip'
+        package: './app.zip'
