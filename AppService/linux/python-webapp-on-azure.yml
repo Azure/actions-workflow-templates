@@ -21,7 +21,7 @@ jobs:
         python-version: '${python-version}'
     
     - name: Build using AppService-Build
-      uses: azure/appservice-build@v2-beta
+      uses: azure/appservice-build@v2
       with:
         platform: python
     
