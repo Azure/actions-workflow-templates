@@ -24,7 +24,7 @@ jobs:
       run: mvn clean install
 
     - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v1
+      uses: azure/webapps-deploy@v2
       with: 
         app-name: '${web-app-name}'
         slot-name: '${slot-name}'
