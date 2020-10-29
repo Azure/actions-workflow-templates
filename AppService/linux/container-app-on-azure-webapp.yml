@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: 'Build and deploy ASP.Net Core app to Azure Web App: ${web-app-name}'
+name: 'Build and deploy container app to Azure Web App: ${web-app-name}'
 
 on:
   push:
@@ -20,19 +20,21 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_SP }}
 
-    - uses: azure/container-actions/docker-login@master
+    - uses: azure/docker-login@v1
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        login-server: ${loginServer}
+        username: ${{ secrets.${containerUsernameSecretName} }}
+        password: ${{ secrets.${containerPasswordSecretName} }}
 
     - name: Build and push the image tagged with the git commit hash
       run: |
-        docker build . -t contoso/demo:${{ github.sha }}
-        docker push contoso/demo:${{ github.sha }}
+        docker build . -t ${server}/${{ secrets.${containerUsernameSecretName} }}/${image}:${{ github.sha }}
+        docker push ${server}/${{ secrets.${containerUsernameSecretName} }}/${image}:${{ github.sha }}
 
     - name: Update image tag on the Azure Web App
       uses: azure/appservice-actions/webapp-container@master
       with:
         app-name: '${web-app-name}'
         slot-name: '${slot-name}'
+        publish-profile: ${{ secrets.${azure-webapp-publish-profile-name} }}
         images: 'contoso/demo:${{ github.sha }}'
