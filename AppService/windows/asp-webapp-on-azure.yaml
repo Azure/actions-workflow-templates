@@ -8,6 +8,7 @@ on:
   push:
     branches:
     - ${branch}
+  workflow_dispatch:
     
 jobs:
   build-and-deploy:
