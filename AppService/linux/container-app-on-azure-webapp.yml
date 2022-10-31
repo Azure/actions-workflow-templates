@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    -name: Authenticate using a Service Principal
+    - name: Authenticate using a Service Principal
       uses: azure/actions/login@master
       with:
         creds: ${{ secrets.AZURE_SP }}
